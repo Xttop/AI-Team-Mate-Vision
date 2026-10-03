@@ -3,134 +3,179 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="theme-color" content="#0b0620" />
   <title>AI Team Mate Vision</title>
   <link rel="stylesheet" href="styles.css" />
 </head>
 <body>
+  <div class="page-orb orb-one"></div>
+  <div class="page-orb orb-two"></div>
+  <div class="page-orb orb-three"></div>
+
   <header class="topbar">
-    <div class="brand">
-      <div class="logo-mark">◉</div>
+    <a class="brand" href="#top" aria-label="AI Team Mate Vision home">
+      <div class="logo-mark">AI</div>
       <div>
-        <strong>AI Team Mate Vision</strong>
-        <span>Your Personal AI Trainer in Augmented Reality</span>
+        <strong>AI TEAM MATE VISION</strong>
+        <span>AR Personal Sports Assistant</span>
       </div>
-    </div>
+    </a>
+    <nav class="nav-links">
+      <a href="#how">How it works</a>
+      <a href="#demo">Demo</a>
+      <a href="#business">For gyms</a>
+    </nav>
     <button id="startBtn" class="primary">Start workout</button>
   </header>
 
-  <main class="app-shell">
-    <section class="hero panel">
+  <main id="top" class="app-shell">
+    <section class="hero">
       <div class="hero-copy">
-        <p class="eyebrow">AR PERSONAL COACH</p>
-        <h1>Train with a virtual coach directly in your field of view.</h1>
-        <p>
-          AI Team Mate Vision guides exercises, tracks workout metrics and helps
-          users train step by step through smart glasses. Smartphone AR is an
-          additional mode for camera-based guidance.
+        <span class="pill">AI + AR + SMART GLASSES</span>
+        <p class="eyebrow">YOUR PERSONAL TRAINER, ALWAYS IN VIEW</p>
+        <h1>Train in the real world with a <span>virtual AI coach.</span></h1>
+        <p class="hero-text">
+          AI Team Mate Vision brings a digital trainer directly into your field of view.
+          The coach demonstrates exercises, guides technique, counts repetitions and
+          connects workout data with smart glasses, wearables and smartphone AR.
         </p>
         <div class="hero-actions">
           <button id="demoBtn" class="primary">Launch workout demo</button>
           <button id="cameraJumpBtn" class="secondary">Open AR camera</button>
-          <button id="resetBtn" class="secondary">Reset</button>
+        </div>
+        <div class="hero-stats">
+          <div><strong>24/7</strong><span>Virtual coaching</span></div>
+          <div><strong>AR</strong><span>In-field guidance</span></div>
+          <div><strong>B2B</strong><span>Gym rental model</span></div>
         </div>
       </div>
 
-      <div class="coach-stage">
-        <div class="ar-grid"></div>
-        <div class="coach">
-          <div class="head"></div>
-          <div class="torso"></div>
-          <div class="arm arm-left"></div>
-          <div class="arm arm-right"></div>
-          <div class="leg leg-left"></div>
-          <div class="leg leg-right"></div>
-          <div class="barbell"></div>
+      <div class="hero-visual glass-card">
+        <div class="visual-glow"></div>
+        <div class="interface-tag tag-top">LIVE AR COACH</div>
+        <div class="coach-stage">
+          <div class="coach-halo"></div>
+          <div class="coach">
+            <div class="head"></div>
+            <div class="torso"></div>
+            <div class="arm arm-left"></div>
+            <div class="arm arm-right"></div>
+            <div class="leg leg-left"></div>
+            <div class="leg leg-right"></div>
+            <div class="barbell"></div>
+          </div>
         </div>
-        <div class="coach-label">Virtual AI Coach</div>
+        <div class="floating-metric fm-one"><span>HEART RATE</span><strong>128 BPM</strong></div>
+        <div class="floating-metric fm-two"><span>FORM</span><strong>GOOD</strong></div>
+        <div class="floating-metric fm-three"><span>REPS</span><strong>08 / 12</strong></div>
       </div>
     </section>
 
-    <section class="dashboard">
-      <article class="metric panel">
-        <span>Heart rate</span>
-        <strong><span id="heartRate">128</span> bpm</strong>
-        <small>Connected wearable data</small>
-      </article>
-
-      <article class="metric panel">
-        <span>Repetitions</span>
-        <strong><span id="reps">0</span> / 12</strong>
-        <button id="repBtn" class="mini">+ 1 rep</button>
-      </article>
-
-      <article class="metric panel">
-        <span>Rest timer</span>
-        <strong id="timer">00:30</strong>
-        <button id="timerBtn" class="mini">Start rest</button>
-      </article>
-
-      <article class="metric panel">
-        <span>Form status</span>
-        <strong id="formStatus" class="good">Good form</strong>
-        <small>Pose-analysis concept</small>
-      </article>
+    <section id="how" class="section">
+      <div class="section-heading">
+        <p class="eyebrow">HOW IT WORKS</p>
+        <h2>One training system. Three layers of assistance.</h2>
+      </div>
+      <div class="feature-grid">
+        <article class="feature-card glass-card">
+          <span class="feature-number">01</span>
+          <h3>Smart glasses coach</h3>
+          <p>A virtual trainer appears in the user's field of view and demonstrates the movement in real time.</p>
+        </article>
+        <article class="feature-card glass-card">
+          <span class="feature-number">02</span>
+          <h3>Live workout intelligence</h3>
+          <p>Repetitions, rest time, heart rate and future pose analysis are combined into one coaching interface.</p>
+        </article>
+        <article class="feature-card glass-card">
+          <span class="feature-number">03</span>
+          <h3>Smartphone AR mode</h3>
+          <p>Point the camera at equipment and receive visual instructions directly over the real gym environment.</p>
+        </article>
+      </div>
     </section>
 
-    <section class="workspace">
-      <article class="panel workout-card">
-        <div class="section-title">
-          <div>
-            <p class="eyebrow">TODAY'S WORKOUT</p>
-            <h2>Full Body Basics</h2>
+    <section id="demo" class="section">
+      <div class="section-heading split-heading">
+        <div>
+          <p class="eyebrow">INTERACTIVE MVP</p>
+          <h2>Live workout dashboard</h2>
+        </div>
+        <button id="resetBtn" class="secondary">Reset demo</button>
+      </div>
+
+      <section class="dashboard">
+        <article class="metric glass-card">
+          <span>Heart rate</span>
+          <strong><span id="heartRate">128</span> bpm</strong>
+          <small>Connected wearable data</small>
+        </article>
+        <article class="metric glass-card">
+          <span>Repetitions</span>
+          <strong><span id="reps">0</span> / 12</strong>
+          <button id="repBtn" class="mini">+ 1 rep</button>
+        </article>
+        <article class="metric glass-card">
+          <span>Rest timer</span>
+          <strong id="timer">00:30</strong>
+          <button id="timerBtn" class="mini">Start rest</button>
+        </article>
+        <article class="metric glass-card">
+          <span>Form status</span>
+          <strong id="formStatus" class="good">Good form</strong>
+          <small>Pose-analysis concept</small>
+        </article>
+      </section>
+
+      <section class="workspace">
+        <article class="glass-card workout-card">
+          <div class="section-title">
+            <div>
+              <p class="eyebrow">TODAY'S WORKOUT</p>
+              <h2>Full Body Basics</h2>
+            </div>
+            <span class="badge">12 min</span>
           </div>
-          <span class="badge">12 min</span>
-        </div>
-
-        <div class="exercise-list">
-          <button class="exercise active" data-exercise="Barbell Squat" data-tip="Keep your back straight and push through your heels.">
-            <span>01</span>
-            <div><strong>Barbell Squat</strong><small>3 × 12 reps</small></div>
-          </button>
-          <button class="exercise" data-exercise="Shoulder Press" data-tip="Keep your core stable and move the weight under control.">
-            <span>02</span>
-            <div><strong>Shoulder Press</strong><small>3 × 10 reps</small></div>
-          </button>
-          <button class="exercise" data-exercise="Walking Lunges" data-tip="Keep the front knee aligned with the foot.">
-            <span>03</span>
-            <div><strong>Walking Lunges</strong><small>3 × 10 each side</small></div>
-          </button>
-        </div>
-      </article>
-
-      <article class="panel guidance-card">
-        <p class="eyebrow">LIVE GUIDANCE</p>
-        <h2 id="exerciseName">Barbell Squat</h2>
-        <div class="tip" id="coachTip">Keep your back straight and push through your heels.</div>
-
-        <div class="checklist">
-          <label><input type="checkbox" checked /> Correct body position</label>
-          <label><input type="checkbox" checked /> Controlled movement</label>
-          <label><input type="checkbox" /> Complete target repetitions</label>
-        </div>
-
-        <div class="ar-mode">
-          <div>
-            <strong>Additional smartphone AR mode</strong>
-            <p>Point the camera at gym equipment and place virtual training guidance over the real environment.</p>
+          <div class="exercise-list">
+            <button class="exercise active" data-exercise="Barbell Squat" data-tip="Keep your back straight and push through your heels.">
+              <span>01</span><div><strong>Barbell Squat</strong><small>3 × 12 reps</small></div>
+            </button>
+            <button class="exercise" data-exercise="Shoulder Press" data-tip="Keep your core stable and move the weight under control.">
+              <span>02</span><div><strong>Shoulder Press</strong><small>3 × 10 reps</small></div>
+            </button>
+            <button class="exercise" data-exercise="Walking Lunges" data-tip="Keep the front knee aligned with the foot.">
+              <span>03</span><div><strong>Walking Lunges</strong><small>3 × 10 each side</small></div>
+            </button>
           </div>
-          <span class="phone">▯</span>
-        </div>
-      </article>
+        </article>
+
+        <article class="glass-card guidance-card">
+          <p class="eyebrow">LIVE GUIDANCE</p>
+          <h2 id="exerciseName">Barbell Squat</h2>
+          <div class="tip" id="coachTip">Keep your back straight and push through your heels.</div>
+          <div class="checklist">
+            <label><input type="checkbox" checked /> Correct body position</label>
+            <label><input type="checkbox" checked /> Controlled movement</label>
+            <label><input type="checkbox" /> Complete target repetitions</label>
+          </div>
+          <div class="ar-mode">
+            <div>
+              <strong>Smartphone AR</strong>
+              <p>Use the camera when smart glasses are not available.</p>
+            </div>
+            <span class="phone">▯</span>
+          </div>
+        </article>
+      </section>
     </section>
 
-    <section id="arCameraSection" class="camera-section panel">
+    <section id="arCameraSection" class="camera-section glass-card">
       <div class="camera-copy">
-        <p class="eyebrow">SMARTPHONE AR PROTOTYPE</p>
-        <h2>Use the real camera as the training view.</h2>
+        <span class="pill">SMARTPHONE AR PROTOTYPE</span>
+        <h2>Turn your camera into a training interface.</h2>
         <p>
-          This MVP uses the phone or computer camera and places workout guidance
-          over the live image. Equipment recognition and pose estimation are the
-          next development layer.
+          The current MVP places workout information over a live camera image.
+          Equipment recognition and automatic pose tracking are the next development layer.
         </p>
         <div class="camera-actions">
           <button id="cameraBtn" class="primary">Enable camera</button>
@@ -142,32 +187,43 @@
       <div class="camera-view">
         <video id="cameraVideo" autoplay playsinline muted></video>
         <div id="cameraPlaceholder" class="camera-placeholder">
-          <span>AR</span>
-          <p>Live camera view will appear here.</p>
+          <div class="scan-circle">AR</div>
+          <p>Live camera view will appear here</p>
         </div>
-
-        <div class="hud hud-top-left">
-          <span>Exercise</span>
-          <strong id="cameraExercise">Barbell Squat</strong>
-        </div>
-        <div class="hud hud-top-right">
-          <span>Heart rate</span>
-          <strong><span id="cameraHeartRate">128</span> bpm</strong>
-        </div>
-        <div class="hud hud-bottom">
-          <strong id="cameraTip">Keep your back straight and push through your heels.</strong>
-          <span>Virtual trainer guidance overlay</span>
-        </div>
-
-        <div class="target-frame">
-          <span>Equipment / athlete scan area</span>
-        </div>
+        <div class="hud hud-top-left"><span>EXERCISE</span><strong id="cameraExercise">Barbell Squat</strong></div>
+        <div class="hud hud-top-right"><span>HEART RATE</span><strong><span id="cameraHeartRate">128</span> bpm</strong></div>
+        <div class="hud hud-bottom"><strong id="cameraTip">Keep your back straight and push through your heels.</strong><span>Virtual trainer guidance overlay</span></div>
+        <div class="target-frame"><span>ATHLETE / EQUIPMENT SCAN</span></div>
       </div>
+    </section>
+
+    <section id="business" class="section business-section">
+      <div class="section-heading">
+        <p class="eyebrow">FOR GYMS & SPORTS CLUBS</p>
+        <h2>AI coaching without requiring every customer to buy smart glasses.</h2>
+        <p class="section-lead">
+          Fitness clubs can own a shared pool of devices and provide them during workouts,
+          creating a scalable digital coaching service for members.
+        </p>
+      </div>
+      <div class="business-grid">
+        <article class="business-card glass-card"><strong>01</strong><h3>Club-owned devices</h3><p>Smart glasses stay in the gym and are issued to members for a session.</p></article>
+        <article class="business-card glass-card"><strong>02</strong><h3>Coach as a service</h3><p>Users receive step-by-step guidance even when a human trainer is unavailable.</p></article>
+        <article class="business-card glass-card"><strong>03</strong><h3>Multiple sports</h3><p>The same platform can extend to fitness, yoga, Pilates and sports training.</p></article>
+      </div>
+    </section>
+
+    <section class="final-cta glass-card">
+      <div>
+        <p class="eyebrow">AI TEAM MATE VISION</p>
+        <h2>The next interface for personal sports training.</h2>
+      </div>
+      <button id="finalDemoBtn" class="primary">Try the MVP</button>
     </section>
   </main>
 
   <footer>
-    Prototype MVP • AI Team Mate Vision
+    AI Team Mate Vision • Interactive MVP
   </footer>
 
   <script src="app.js"></script>
