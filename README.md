@@ -58,3 +58,6 @@ No build step is required.
 ---
 
 Prototype created for the **AI Team Mate Vision** project.
+
+
+GitHub Pages deployment trigger.
