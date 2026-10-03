@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>AI Team Mate Vision</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <header class="topbar">
+    <div class="brand">
+      <div class="logo-mark">◉</div>
+      <div>
+        <strong>AI Team Mate Vision</strong>
+        <span>Your Personal AI Trainer in Augmented Reality</span>
+      </div>
+    </div>
+    <button id="startBtn" class="primary">Start workout</button>
+  </header>
+
+  <main class="app-shell">
+    <section class="hero panel">
+      <div class="hero-copy">
+        <p class="eyebrow">AR PERSONAL COACH</p>
+        <h1>Train with a virtual coach directly in your field of view.</h1>
+        <p>
+          AI Team Mate Vision guides exercises, tracks workout metrics and helps
+          users train step by step through smart glasses. Smartphone AR can be
+          used as an additional mode.
+        </p>
+        <div class="hero-actions">
+          <button id="demoBtn" class="primary">Launch demo</button>
+          <button id="resetBtn" class="secondary">Reset</button>
+        </div>
+      </div>
+
+      <div class="coach-stage">
+        <div class="ar-grid"></div>
+        <div class="coach">
+          <div class="head"></div>
+          <div class="torso"></div>
+          <div class="arm arm-left"></div>
+          <div class="arm arm-right"></div>
+          <div class="leg leg-left"></div>
+          <div class="leg leg-right"></div>
+          <div class="barbell"></div>
+        </div>
+        <div class="coach-label">Virtual AI Coach</div>
+      </div>
+    </section>
+
+    <section class="dashboard">
+      <article class="metric panel">
+        <span>Heart rate</span>
+        <strong><span id="heartRate">128</span> bpm</strong>
+        <small>Connected wearable data</small>
+      </article>
+
+      <article class="metric panel">
+        <span>Repetitions</span>
+        <strong><span id="reps">0</span> / 12</strong>
+        <button id="repBtn" class="mini">+ 1 rep</button>
+      </article>
+
+      <article class="metric panel">
+        <span>Rest timer</span>
+        <strong id="timer">00:30</strong>
+        <button id="timerBtn" class="mini">Start rest</button>
+      </article>
+
+      <article class="metric panel">
+        <span>Form status</span>
+        <strong id="formStatus" class="good">Good form</strong>
+        <small>Pose-analysis concept</small>
+      </article>
+    </section>
+
+    <section class="workspace">
+      <article class="panel workout-card">
+        <div class="section-title">
+          <div>
+            <p class="eyebrow">TODAY'S WORKOUT</p>
+            <h2>Full Body Basics</h2>
+          </div>
+          <span class="badge">12 min</span>
+        </div>
+
+        <div class="exercise-list">
+          <button class="exercise active" data-exercise="Barbell Squat" data-tip="Keep your back straight and push through your heels.">
+            <span>01</span>
+            <div><strong>Barbell Squat</strong><small>3 × 12 reps</small></div>
+          </button>
+          <button class="exercise" data-exercise="Shoulder Press" data-tip="Keep your core stable and move the weight under control.">
+            <span>02</span>
+            <div><strong>Shoulder Press</strong><small>3 × 10 reps</small></div>
+          </button>
+          <button class="exercise" data-exercise="Walking Lunges" data-tip="Keep the front knee aligned with the foot.">
+            <span>03</span>
+            <div><strong>Walking Lunges</strong><small>3 × 10 each side</small></div>
+          </button>
+        </div>
+      </article>
+
+      <article class="panel guidance-card">
+        <p class="eyebrow">LIVE GUIDANCE</p>
+        <h2 id="exerciseName">Barbell Squat</h2>
+        <div class="tip" id="coachTip">Keep your back straight and push through your heels.</div>
+
+        <div class="checklist">
+          <label><input type="checkbox" checked /> Correct body position</label>
+          <label><input type="checkbox" checked /> Controlled movement</label>
+          <label><input type="checkbox" /> Complete target repetitions</label>
+        </div>
+
+        <div class="ar-mode">
+          <div>
+            <strong>Additional smartphone AR mode</strong>
+            <p>Point the camera at gym equipment to see exercise instructions over the real environment.</p>
+          </div>
+          <span class="phone">▯</span>
+        </div>
+      </article>
+    </section>
+  </main>
+
+  <footer>
+    Prototype MVP • AI Team Mate Vision
+  </footer>
+
+  <script src="app.js"></script>
+</body>
+</html>
