@@ -149,3 +149,11 @@ document.querySelectorAll('.exercise').forEach((button) => {
 
 window.addEventListener('beforeunload', stopCamera);
 renderTimer();
+
+const finalDemoBtn = document.getElementById('finalDemoBtn');
+if (finalDemoBtn) {
+  finalDemoBtn.addEventListener('click', () => {
+    document.getElementById('demo').scrollIntoView({ behavior: 'smooth', block: 'start' });
+    startDemo();
+  });
+}
