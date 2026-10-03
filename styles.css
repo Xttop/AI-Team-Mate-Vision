@@ -748,3 +748,117 @@ footer {
   .hero-image-card { min-height: 380px; }
   .hero-concept-image { object-position: 58% center; }
 }
+
+
+/* Squat technique AR visual section */
+.technique-section {
+  padding-top: 72px;
+}
+
+.technique-grid {
+  display: grid;
+  grid-template-columns: 1.15fr .85fr;
+  gap: 0;
+  overflow: hidden;
+  border-radius: 28px;
+}
+
+.technique-image-wrap {
+  position: relative;
+  min-height: 470px;
+  overflow: hidden;
+}
+
+.technique-image {
+  width: 100%;
+  height: 100%;
+  min-height: 470px;
+  display: block;
+  object-fit: cover;
+}
+
+.technique-image-wrap::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background:
+    linear-gradient(90deg, transparent 55%, rgba(9,5,28,.32) 100%),
+    linear-gradient(180deg, transparent 62%, rgba(9,5,28,.38) 100%);
+  pointer-events: none;
+}
+
+.technique-badge {
+  position: absolute;
+  left: 18px;
+  top: 18px;
+  z-index: 2;
+  padding: 8px 11px;
+  border-radius: 10px;
+  border: 1px solid rgba(169,142,255,.32);
+  background: rgba(9,6,27,.72);
+  backdrop-filter: blur(10px);
+  color: #d9ccff;
+  font-size: .65rem;
+  font-weight: 800;
+  letter-spacing: .12em;
+}
+
+.technique-copy {
+  padding: 38px;
+  align-self: center;
+}
+
+.technique-copy h2 {
+  margin: 8px 0 14px;
+  font-size: clamp(2rem, 3.5vw, 3.6rem);
+  line-height: 1.02;
+  letter-spacing: -.035em;
+}
+
+.technique-copy > p:not(.eyebrow) {
+  color: var(--muted);
+  line-height: 1.7;
+}
+
+.technique-points {
+  display: grid;
+  gap: 12px;
+  margin-top: 24px;
+}
+
+.technique-points div {
+  display: grid;
+  grid-template-columns: 38px 1fr;
+  gap: 3px 12px;
+  padding: 13px 0;
+  border-top: 1px solid rgba(255,255,255,.08);
+}
+
+.technique-points span {
+  grid-row: 1 / 3;
+  color: #aa91ff;
+  font-weight: 900;
+  font-size: .75rem;
+  padding-top: 3px;
+}
+
+.technique-points strong {
+  font-size: .95rem;
+}
+
+.technique-points small {
+  color: var(--muted);
+  line-height: 1.45;
+}
+
+@media (max-width: 900px) {
+  .technique-grid { grid-template-columns: 1fr; }
+  .technique-image-wrap,
+  .technique-image { min-height: 380px; }
+}
+
+@media (max-width: 560px) {
+  .technique-copy { padding: 24px; }
+  .technique-image-wrap,
+  .technique-image { min-height: 300px; }
+}
