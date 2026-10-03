@@ -1,0 +1,86 @@
+const heartRate = document.getElementById('heartRate');
+const reps = document.getElementById('reps');
+const timer = document.getElementById('timer');
+const formStatus = document.getElementById('formStatus');
+const exerciseName = document.getElementById('exerciseName');
+const coachTip = document.getElementById('coachTip');
+
+let repCount = 0;
+let restSeconds = 30;
+let restHandle = null;
+let hrHandle = null;
+
+function renderTimer() {
+  const minutes = Math.floor(restSeconds / 60).toString().padStart(2, '0');
+  const seconds = (restSeconds % 60).toString().padStart(2, '0');
+  timer.textContent = minutes + ':' + seconds;
+}
+
+function startDemo() {
+  if (!hrHandle) {
+    hrHandle = setInterval(() => {
+      const value = 118 + Math.floor(Math.random() * 24);
+      heartRate.textContent = value;
+    }, 1200);
+  }
+  formStatus.textContent = 'Tracking live';
+  formStatus.classList.add('good');
+}
+
+function resetDemo() {
+  repCount = 0;
+  reps.textContent = repCount;
+  restSeconds = 30;
+  renderTimer();
+  heartRate.textContent = 128;
+  formStatus.textContent = 'Good form';
+
+  if (restHandle) clearInterval(restHandle);
+  if (hrHandle) clearInterval(hrHandle);
+  restHandle = null;
+  hrHandle = null;
+  document.getElementById('timerBtn').textContent = 'Start rest';
+}
+
+document.getElementById('startBtn').addEventListener('click', startDemo);
+document.getElementById('demoBtn').addEventListener('click', startDemo);
+document.getElementById('resetBtn').addEventListener('click', resetDemo);
+
+document.getElementById('repBtn').addEventListener('click', () => {
+  repCount = Math.min(12, repCount + 1);
+  reps.textContent = repCount;
+  if (repCount === 12) formStatus.textContent = 'Set complete';
+});
+
+document.getElementById('timerBtn').addEventListener('click', (event) => {
+  if (restHandle) return;
+
+  event.currentTarget.textContent = 'Resting…';
+  restHandle = setInterval(() => {
+    restSeconds -= 1;
+    renderTimer();
+
+    if (restSeconds <= 0) {
+      clearInterval(restHandle);
+      restHandle = null;
+      event.currentTarget.textContent = 'Start rest';
+      restSeconds = 30;
+      formStatus.textContent = 'Ready for next set';
+      setTimeout(renderTimer, 900);
+    }
+  }, 1000);
+});
+
+document.querySelectorAll('.exercise').forEach((button) => {
+  button.addEventListener('click', () => {
+    document.querySelectorAll('.exercise').forEach((item) => item.classList.remove('active'));
+    button.classList.add('active');
+    exerciseName.textContent = button.dataset.exercise;
+    coachTip.textContent = button.dataset.tip;
+    repCount = 0;
+    reps.textContent = repCount;
+    formStatus.textContent = 'Good form';
+  });
+});
+
+renderTimer();
