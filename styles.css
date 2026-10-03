@@ -682,3 +682,69 @@ footer {
   .camera-view video { min-height: 370px; }
   .target-frame { inset: 28% 11% 24%; }
 }
+
+/* Uploaded project visuals */
+.logo-mark {
+  overflow: hidden;
+  padding: 0;
+  background: rgba(255,255,255,.03);
+}
+
+.logo-mark img {
+  width: 100%;
+  height: 100%;
+  display: block;
+  object-fit: cover;
+  border-radius: inherit;
+}
+
+.hero-image-card {
+  position: relative;
+  overflow: hidden;
+  min-height: 540px;
+  isolation: isolate;
+}
+
+.hero-concept-image {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+  z-index: 0;
+}
+
+.hero-image-shade {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  background:
+    linear-gradient(180deg, rgba(5,4,18,.08), rgba(5,4,18,.16) 50%, rgba(5,4,18,.42) 100%),
+    radial-gradient(circle at 70% 45%, transparent 0 30%, rgba(15,8,45,.12) 75%, rgba(9,5,28,.32) 100%);
+  pointer-events: none;
+}
+
+.hero-image-card .interface-tag,
+.hero-image-card .floating-metric {
+  z-index: 3;
+}
+
+.hero-image-card::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: 2;
+  pointer-events: none;
+  border-radius: inherit;
+  box-shadow: inset 0 0 80px rgba(100,70,255,.12);
+}
+
+@media (max-width: 900px) {
+  .hero-image-card { min-height: 480px; }
+}
+
+@media (max-width: 560px) {
+  .hero-image-card { min-height: 380px; }
+  .hero-concept-image { object-position: 58% center; }
+}
