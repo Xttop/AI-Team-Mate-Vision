@@ -25,11 +25,12 @@
         <h1>Train with a virtual coach directly in your field of view.</h1>
         <p>
           AI Team Mate Vision guides exercises, tracks workout metrics and helps
-          users train step by step through smart glasses. Smartphone AR can be
-          used as an additional mode.
+          users train step by step through smart glasses. Smartphone AR is an
+          additional mode for camera-based guidance.
         </p>
         <div class="hero-actions">
-          <button id="demoBtn" class="primary">Launch demo</button>
+          <button id="demoBtn" class="primary">Launch workout demo</button>
+          <button id="cameraJumpBtn" class="secondary">Open AR camera</button>
           <button id="resetBtn" class="secondary">Reset</button>
         </div>
       </div>
@@ -115,11 +116,53 @@
         <div class="ar-mode">
           <div>
             <strong>Additional smartphone AR mode</strong>
-            <p>Point the camera at gym equipment to see exercise instructions over the real environment.</p>
+            <p>Point the camera at gym equipment and place virtual training guidance over the real environment.</p>
           </div>
           <span class="phone">▯</span>
         </div>
       </article>
+    </section>
+
+    <section id="arCameraSection" class="camera-section panel">
+      <div class="camera-copy">
+        <p class="eyebrow">SMARTPHONE AR PROTOTYPE</p>
+        <h2>Use the real camera as the training view.</h2>
+        <p>
+          This MVP uses the phone or computer camera and places workout guidance
+          over the live image. Equipment recognition and pose estimation are the
+          next development layer.
+        </p>
+        <div class="camera-actions">
+          <button id="cameraBtn" class="primary">Enable camera</button>
+          <button id="stopCameraBtn" class="secondary" disabled>Stop camera</button>
+        </div>
+        <p id="cameraStatus" class="camera-status">Camera is off.</p>
+      </div>
+
+      <div class="camera-view">
+        <video id="cameraVideo" autoplay playsinline muted></video>
+        <div id="cameraPlaceholder" class="camera-placeholder">
+          <span>AR</span>
+          <p>Live camera view will appear here.</p>
+        </div>
+
+        <div class="hud hud-top-left">
+          <span>Exercise</span>
+          <strong id="cameraExercise">Barbell Squat</strong>
+        </div>
+        <div class="hud hud-top-right">
+          <span>Heart rate</span>
+          <strong><span id="cameraHeartRate">128</span> bpm</strong>
+        </div>
+        <div class="hud hud-bottom">
+          <strong id="cameraTip">Keep your back straight and push through your heels.</strong>
+          <span>Virtual trainer guidance overlay</span>
+        </div>
+
+        <div class="target-frame">
+          <span>Equipment / athlete scan area</span>
+        </div>
+      </div>
     </section>
   </main>
 
