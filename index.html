@@ -4,8 +4,14 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <meta name="theme-color" content="#050816" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+  <meta name="apple-mobile-web-app-title" content="Altima ML Vision" />
   <meta name="description" content="Altima ML Vision — a personal AI Sports Assistant built around AR/VR glasses, real-time technique analysis, cameras and sports wearables." />
   <title>Altima ML Vision — Personal AI Sports Assistant</title>
+  <link rel="manifest" href="manifest.webmanifest" />
+  <link rel="apple-touch-icon" href="ai-team-mate-vision-logo.png" />
+  <link rel="icon" href="app-icon.svg" type="image/svg+xml" />
   <link rel="stylesheet" href="styles.css" />
 </head>
 <body>
@@ -30,7 +36,10 @@
       <a href="#roadmap">Roadmap</a>
     </nav>
 
-    <button id="startBtn" class="primary">Try interactive MVP</button>
+    <div class="topbar-actions">
+      <button id="installBtn" class="secondary" hidden>Install app</button>
+      <button id="startBtn" class="primary">Try interactive MVP</button>
+    </div>
   </header>
 
   <main id="top" class="app-shell">
