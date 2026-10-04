@@ -1,0 +1,51 @@
+name: Build Meta VR Glasses APK
+
+on:
+  push:
+    branches: [ main ]
+    paths:
+      - "meta-vr-glasses-app/**"
+      - ".github/workflows/meta-vr-glasses-apk.yml"
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    timeout-minutes: 45
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Java
+        uses: actions/setup-java@v5
+        with:
+          distribution: temurin
+          java-version: "17"
+
+      - name: Setup Gradle
+        uses: gradle/actions/setup-gradle@v4
+        with:
+          gradle-version: "9.4.1"
+
+      - name: Install Android SDK 34
+        run: |
+          yes | sdkmanager --licenses >/dev/null || true
+          sdkmanager "platforms;android-34" "build-tools;34.0.0" "platform-tools"
+
+      - name: Build APK
+        working-directory: meta-vr-glasses-app
+        run: gradle :app:assembleDebug --no-daemon
+
+      - name: Prepare APK
+        run: cp meta-vr-glasses-app/app/build/outputs/apk/debug/app-debug.apk Altima-ML-Vision-Meta-VR-Glasses-debug.apk
+
+      - name: Upload APK artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: Altima-ML-Vision-Meta-VR-Glasses
+          path: Altima-ML-Vision-Meta-VR-Glasses-debug.apk
+          retention-days: 30
