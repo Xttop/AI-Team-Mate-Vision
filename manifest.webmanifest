@@ -1,0 +1,19 @@
+{
+  "name": "Altima ML Vision — Personal AI Sports Assistant",
+  "short_name": "Altima ML Vision",
+  "description": "AI sports assistant built around AR/VR glasses, camera-based movement analysis and sports wearables.",
+  "start_url": "./",
+  "scope": "./",
+  "display": "standalone",
+  "background_color": "#040715",
+  "theme_color": "#050816",
+  "orientation": "portrait-primary",
+  "icons": [
+    {
+      "src": "app-icon.svg",
+      "sizes": "any",
+      "type": "image/svg+xml",
+      "purpose": "any maskable"
+    }
+  ]
+}
