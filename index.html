@@ -3,109 +3,224 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <meta name="theme-color" content="#0b0620" />
-  <title>AI Team Mate Vision</title>
+  <meta name="theme-color" content="#050816" />
+  <meta name="description" content="Altima ML Vision — a personal AI Sports Assistant for camera-based technique analysis, wearables, motivation and optional AR glasses." />
+  <title>Altima ML Vision — Personal AI Sports Assistant</title>
   <link rel="stylesheet" href="styles.css" />
 </head>
 <body>
   <div class="ambient ambient-one"></div>
   <div class="ambient ambient-two"></div>
   <div class="ambient ambient-three"></div>
-  <div class="page-orb orb-one"></div>
-  <div class="page-orb orb-two"></div>
-  <div class="page-orb orb-three"></div>
 
   <header class="topbar">
-    <a class="brand" href="#top" aria-label="AI Team Mate Vision home">
-      <div class="logo-mark"><img src="ai-team-mate-vision-logo.png" alt="AI Team Mate Vision logo" /></div>
-      <div>
-        <strong>AI TEAM MATE VISION</strong>
-        <span>AR Personal Sports Assistant</span>
-      </div>
+    <a class="brand" href="#top" aria-label="Altima ML Vision home">
+      <span class="logo-mark"><img src="ai-team-mate-vision-logo.png" alt="Altima ML Vision logo" /></span>
+      <span class="brand-copy">
+        <strong>ALTIMA ML VISION</strong>
+        <small>Personal AI Sports Assistant</small>
+      </span>
     </a>
-    <nav class="nav-links">
-      <a href="#how">How it works</a>
-      <a href="#demo">Demo</a>
-      <a href="#business">For gyms</a>
+
+    <nav class="nav-links" aria-label="Main navigation">
+      <a href="#product">Product</a>
+      <a href="#personalization">Personalization</a>
+      <a href="#analysis">Technique</a>
+      <a href="#gyms">For gyms</a>
+      <a href="#roadmap">Roadmap</a>
     </nav>
-    <button id="startBtn" class="primary">Start workout</button>
+
+    <button id="startBtn" class="primary">Try interactive MVP</button>
   </header>
 
   <main id="top" class="app-shell">
     <section class="hero">
       <div class="hero-copy">
-        <span class="pill">AI + AR + SMART GLASSES</span>
-        <p class="eyebrow">YOUR PERSONAL TRAINER, ALWAYS IN VIEW</p>
-        <h1>Train in the real world with a <span>virtual AI coach.</span></h1>
+        <span class="pill">AI SPORTS ASSISTANT • CAMERA + WEARABLES + OPTIONAL AR</span>
+        <p class="eyebrow">PERSONAL COACHING, ADAPTED TO YOU</p>
+        <h1>Train independently with <span>real-time AI feedback.</span></h1>
         <p class="hero-text">
-          AI Team Mate Vision brings a digital trainer directly into your field of view.
-          The coach demonstrates exercises, guides technique, counts repetitions and
-          connects workout data with smart glasses, wearables and smartphone AR.
+          Altima ML Vision turns a smartphone, webcam or wearable into a personal training system.
+          AI follows movement, detects technique mistakes, counts repetitions, manages rest and adapts
+          the workout to the user. AR glasses add a premium immersive layer, but they are not required.
         </p>
+
         <div class="hero-actions">
           <button id="demoBtn" class="primary">Launch workout demo</button>
-          <button id="cameraJumpBtn" class="secondary">Open AR camera</button>
+          <button id="cameraJumpBtn" class="secondary">Test camera mode</button>
         </div>
+
         <div class="hero-stats">
-          <div><strong>24/7</strong><span>Virtual coaching</span></div>
-          <div><strong>AR</strong><span>In-field guidance</span></div>
-          <div><strong>B2B</strong><span>Gym rental model</span></div>
+          <div><strong>1 AI</strong><span>One connected assistant</span></div>
+          <div><strong>Real time</strong><span>Technique feedback</span></div>
+          <div><strong>Optional AR</strong><span>No expensive hardware required</span></div>
         </div>
       </div>
 
       <div class="hero-visual glass-card hero-image-card">
-        <img class="hero-concept-image" src="ar-coach-concept.png" alt="AI Team Mate Vision AR coach concept" />
+        <img class="hero-concept-image" src="ar-coach-concept.png" alt="Altima ML Vision virtual coach concept" />
         <div class="hero-image-shade"></div>
-        <div class="interface-tag tag-top">LIVE AR COACH</div>
+        <div class="interface-tag tag-top">AI SPORTS ASSISTANT</div>
         <div class="floating-metric fm-one"><span>HEART RATE</span><strong>128 BPM</strong></div>
-        <div class="floating-metric fm-two"><span>FORM</span><strong>GOOD</strong></div>
+        <div class="floating-metric fm-two"><span>FORM SCORE</span><strong>92%</strong></div>
         <div class="floating-metric fm-three"><span>REPS</span><strong>08 / 12</strong></div>
       </div>
     </section>
 
-    <section id="how" class="section">
+    <section class="device-strip" aria-label="Supported devices">
+      <div><span>◉</span><strong>Smartphone camera</strong><small>Fastest way to start</small></div>
+      <div><span>▣</span><strong>Webcam</strong><small>Home or gym training</small></div>
+      <div><span>♥</span><strong>Wearables</strong><small>Heart rate and activity data</small></div>
+      <div><span>⌁</span><strong>AR glasses</strong><small>Optional premium interface</small></div>
+    </section>
+
+    <section id="product" class="section">
       <div class="section-heading">
-        <p class="eyebrow">HOW IT WORKS</p>
-        <h2>One training system. Three layers of assistance.</h2>
+        <p class="eyebrow">WHAT IS ALTIMA ML VISION?</p>
+        <h2>A personal AI Sports Assistant that stays with the user before, during and after every workout.</h2>
+        <p class="section-lead">
+          The core experience works with accessible hardware. A camera observes movement, AI compares it
+          with the target technique, and the user receives immediate guidance.
+        </p>
       </div>
-      <div class="feature-grid">
+
+      <div class="feature-grid four">
         <article class="feature-card glass-card">
-          <span class="feature-number">01</span>
-          <h3>Smart glasses coach</h3>
-          <p>A virtual trainer appears in the user's field of view and demonstrates the movement in real time.</p>
+          <span class="feature-icon">◎</span>
+          <h3>See the movement</h3>
+          <p>Computer vision tracks key body points, posture, joint angles and movement trajectory.</p>
         </article>
         <article class="feature-card glass-card">
-          <span class="feature-number">02</span>
-          <h3>Live workout intelligence</h3>
-          <p>Repetitions, rest time, heart rate and future pose analysis are combined into one coaching interface.</p>
+          <span class="feature-icon">✓</span>
+          <h3>Correct mistakes</h3>
+          <p>The user sees what is correct, where the mistake is and how to fix it during the exercise.</p>
         </article>
         <article class="feature-card glass-card">
-          <span class="feature-number">03</span>
-          <h3>Smartphone AR mode</h3>
-          <p>Point the camera at equipment and receive visual instructions directly over the real gym environment.</p>
+          <span class="feature-icon">↻</span>
+          <h3>Manage the session</h3>
+          <p>AI counts repetitions, manages rest time, controls load and saves training progress.</p>
+        </article>
+        <article class="feature-card glass-card">
+          <span class="feature-icon">✦</span>
+          <h3>Demonstrate technique</h3>
+          <p>A virtual trainer can show the correct movement and explain what should change.</p>
         </article>
       </div>
     </section>
 
-    <section class="section technique-section">
-      <div class="technique-grid glass-card">
-        <div class="technique-image-wrap">
-          <img src="squat-technique-ar.png" alt="AI Team Mate Vision squat technique AR analysis" class="technique-image" />
-          <div class="technique-badge">POSE GUIDANCE</div>
-        </div>
-        <div class="technique-copy">
-          <p class="eyebrow">TECHNIQUE ANALYSIS</p>
-          <h2>See what correct movement should look like.</h2>
+    <section id="personalization" class="section personalization-section">
+      <div class="personalization-card glass-card">
+        <div class="personalization-copy">
+          <p class="eyebrow">PERSONALIZATION</p>
+          <h2>The workout adapts to the person — not the person to the workout.</h2>
           <p>
-            The AR coach can compare the user's movement with the demonstrated technique,
-            highlight body alignment, and provide immediate visual guidance during an exercise.
+            Altima ML Vision can combine user preferences, training history and connected sensor data to
+            choose a more appropriate workout intensity, duration, difficulty and format.
           </p>
-          <div class="technique-points">
-            <div><span>01</span><strong>Body position</strong><small>Visual guidance for posture and alignment.</small></div>
-            <div><span>02</span><strong>Movement quality</strong><small>Compare execution with the target exercise pattern.</small></div>
-            <div><span>03</span><strong>Instant feedback</strong><small>Show simple corrections while the user is training.</small></div>
+
+          <div class="preference-tags">
+            <span>Age</span><span>Height & weight</span><span>Fitness level</span><span>Heart rate</span>
+            <span>Wearables</span><span>User-provided limitations</span><span>Mood</span><span>Well-being</span>
+            <span>Favorite music</span><span>Training location</span><span>Sports preferences</span>
           </div>
         </div>
+
+        <div class="sports-selector">
+          <span class="mini-label">CHOOSE YOUR ACTIVITY</span>
+          <button class="sport-chip active">Running</button>
+          <button class="sport-chip">Fitness</button>
+          <button class="sport-chip">Strength</button>
+          <button class="sport-chip">Yoga</button>
+          <button class="sport-chip">Pilates</button>
+          <button class="sport-chip">Other</button>
+          <div class="adaptation-panel">
+            <span>AI ADAPTATION</span>
+            <strong>Intensity • Duration • Difficulty • Format</strong>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section motivation-section">
+      <div class="motivation-grid">
+        <div class="glass-card motivation-main">
+          <p class="eyebrow">SPORTS ASSISTANT & MOTIVATION</p>
+          <h2>More than a workout program.</h2>
+          <p>
+            The AI Sports Assistant keeps context between sessions and can support the user as a permanent
+            sports companion and motivator.
+          </p>
+          <div class="motivation-list">
+            <span>Ask about well-being</span>
+            <span>Take mood into account</span>
+            <span>Remind about training</span>
+            <span>Suggest an easier session when tired</span>
+            <span>Adjust intensity</span>
+            <span>Select workout music</span>
+          </div>
+        </div>
+
+        <div class="glass-card companion-card">
+          <div class="companion-orb">AI</div>
+          <span class="mini-label">TODAY'S CHECK-IN</span>
+          <h3>How are you feeling today?</h3>
+          <p>Low energy detected from your input. I can shorten today's session and reduce intensity.</p>
+          <div class="companion-actions">
+            <span>20 min session</span>
+            <span>Lower intensity</span>
+            <span>Recovery focus</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="analysis" class="section technique-section">
+      <div class="technique-grid glass-card">
+        <div class="technique-image-wrap">
+          <img src="squat-technique-ar.png" alt="Altima ML Vision squat technique analysis" class="technique-image" />
+          <div class="technique-badge">REAL-TIME POSE ANALYSIS</div>
+        </div>
+
+        <div class="technique-copy">
+          <p class="eyebrow">TECHNIQUE ANALYSIS</p>
+          <h2>AI can see the user's movement.</h2>
+          <p>
+            A smartphone camera, webcam or cameras built into AR glasses can be used to compare the
+            user's movement with the target technique.
+          </p>
+
+          <div class="analysis-list">
+            <div><span>▥</span><strong>Body position</strong></div>
+            <div><span>◴</span><strong>Joint angles</strong></div>
+            <div><span>⌁</span><strong>Movement trajectory</strong></div>
+            <div><span>◷</span><strong>Tempo</strong></div>
+            <div><span>↔</span><strong>Range of motion</strong></div>
+            <div><span>✓</span><strong>Repetition quality</strong></div>
+          </div>
+
+          <div class="advantage-box">
+            <span>MAIN ADVANTAGE</span>
+            <strong>The mistake is shown during the exercise — not after the workout.</strong>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section workflow-section">
+      <div class="section-heading">
+        <p class="eyebrow">HOW A WORKOUT WORKS</p>
+        <h2>From goal to result in one connected flow.</h2>
+      </div>
+
+      <div class="workflow-grid">
+        <article><span>01</span><strong>Select a goal</strong><small>The user defines the desired outcome.</small></article>
+        <article><span>02</span><strong>Evaluate profile</strong><small>AI considers level and preferences.</small></article>
+        <article><span>03</span><strong>Create workout</strong><small>A personalized session is generated.</small></article>
+        <article><span>04</span><strong>Show technique</strong><small>The virtual trainer demonstrates the exercise.</small></article>
+        <article><span>05</span><strong>Analyze movement</strong><small>The camera follows exercise execution.</small></article>
+        <article><span>06</span><strong>Correct & count</strong><small>AI gives feedback and counts repetitions.</small></article>
+        <article><span>07</span><strong>Manage load</strong><small>Rest time and intensity are adjusted.</small></article>
+        <article><span>08</span><strong>Save progress</strong><small>The next session uses previous results.</small></article>
       </div>
     </section>
 
@@ -114,6 +229,7 @@
         <div>
           <p class="eyebrow">INTERACTIVE MVP</p>
           <h2>Live workout dashboard</h2>
+          <p class="section-lead">A lightweight prototype showing the interaction model for the future product.</p>
         </div>
         <button id="resetBtn" class="secondary">Reset demo</button>
       </div>
@@ -150,14 +266,15 @@
             </div>
             <span class="badge">12 min</span>
           </div>
+
           <div class="exercise-list">
-            <button class="exercise active" data-exercise="Barbell Squat" data-tip="Keep your back straight and push through your heels.">
+            <button class="exercise active" data-exercise="Barbell Squat" data-tip="Keep your knees aligned with your toes and maintain a neutral back.">
               <span>01</span><div><strong>Barbell Squat</strong><small>3 × 12 reps</small></div>
             </button>
             <button class="exercise" data-exercise="Shoulder Press" data-tip="Keep your core stable and move the weight under control.">
               <span>02</span><div><strong>Shoulder Press</strong><small>3 × 10 reps</small></div>
             </button>
-            <button class="exercise" data-exercise="Walking Lunges" data-tip="Keep the front knee aligned with the foot.">
+            <button class="exercise" data-exercise="Walking Lunges" data-tip="Keep the front knee aligned with the foot and control your stride.">
               <span>03</span><div><strong>Walking Lunges</strong><small>3 × 10 each side</small></div>
             </button>
           </div>
@@ -166,16 +283,18 @@
         <article class="glass-card guidance-card">
           <p class="eyebrow">LIVE GUIDANCE</p>
           <h2 id="exerciseName">Barbell Squat</h2>
-          <div class="tip" id="coachTip">Keep your back straight and push through your heels.</div>
+          <div class="tip" id="coachTip">Keep your knees aligned with your toes and maintain a neutral back.</div>
+
           <div class="checklist">
             <label><input type="checkbox" checked /> Correct body position</label>
             <label><input type="checkbox" checked /> Controlled movement</label>
             <label><input type="checkbox" /> Complete target repetitions</label>
           </div>
+
           <div class="ar-mode">
             <div>
-              <strong>Smartphone AR</strong>
-              <p>Use the camera when smart glasses are not available.</p>
+              <strong>Accessible first</strong>
+              <p>Smartphone or webcam is enough to start. AR glasses remain optional.</p>
             </div>
             <span class="phone">▯</span>
           </div>
@@ -185,11 +304,11 @@
 
     <section id="arCameraSection" class="camera-section glass-card">
       <div class="camera-copy">
-        <span class="pill">SMARTPHONE AR PROTOTYPE</span>
+        <span class="pill">CAMERA TESTING PROTOTYPE</span>
         <h2>Turn your camera into a training interface.</h2>
         <p>
-          The current MVP places workout information over a live camera image.
-          Equipment recognition and automatic pose tracking are the next development layer.
+          This browser prototype places workout information over a live camera image. The next technical
+          layer is automatic pose tracking, exercise recognition and technique-error detection.
         </p>
         <div class="camera-actions">
           <button id="cameraBtn" class="primary">Enable camera</button>
@@ -201,43 +320,172 @@
       <div class="camera-view">
         <video id="cameraVideo" autoplay playsinline muted></video>
         <div id="cameraPlaceholder" class="camera-placeholder">
-          <div class="scan-circle">AR</div>
+          <div class="scan-circle">AI</div>
           <p>Live camera view will appear here</p>
         </div>
         <div class="hud hud-top-left"><span>EXERCISE</span><strong id="cameraExercise">Barbell Squat</strong></div>
         <div class="hud hud-top-right"><span>HEART RATE</span><strong><span id="cameraHeartRate">128</span> bpm</strong></div>
-        <div class="hud hud-bottom"><strong id="cameraTip">Keep your back straight and push through your heels.</strong><span>Virtual trainer guidance overlay</span></div>
-        <div class="target-frame"><span>ATHLETE / EQUIPMENT SCAN</span></div>
+        <div class="hud hud-bottom"><strong id="cameraTip">Keep your knees aligned with your toes and maintain a neutral back.</strong><span>Virtual trainer guidance overlay</span></div>
+        <div class="target-frame"><span>ATHLETE / MOVEMENT SCAN</span></div>
       </div>
     </section>
 
-    <section id="business" class="section business-section">
+    <section class="section lifestyle-section">
+      <div class="two-column">
+        <article class="glass-card lifestyle-card">
+          <p class="eyebrow">NUTRITION & LIFESTYLE</p>
+          <h2>Sport is more than the workout itself.</h2>
+          <p>
+            The user can show the assistant through photos or video what they eat and how their day is going.
+            AI can connect nutrition, activity, training load, recovery, body-weight changes and sports goals.
+          </p>
+          <div class="lifestyle-metrics">
+            <span>Nutrition</span><span>Activity</span><span>Load</span><span>Recovery</span><span>Weight</span><span>Goals</span>
+          </div>
+        </article>
+
+        <article class="glass-card system-card">
+          <p class="eyebrow">ONE CONNECTED SYSTEM</p>
+          <h2>All sports data in one assistant.</h2>
+          <div class="system-stack">
+            <div><strong>AI</strong><small>Recommendations and dialogue</small></div>
+            <div><strong>Computer Vision</strong><small>Body-position and exercise analysis</small></div>
+            <div><strong>Smartphone / Webcam</strong><small>Accessible visual input</small></div>
+            <div><strong>Wearables</strong><small>Heart rate and activity indicators</small></div>
+            <div><strong>AR Glasses</strong><small>Virtual trainer in the user's field of view</small></div>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <section id="gyms" class="section gym-section">
       <div class="section-heading">
-        <p class="eyebrow">FOR GYMS & SPORTS CLUBS</p>
-        <h2>AI coaching without requiring every customer to buy smart glasses.</h2>
+        <p class="eyebrow">AR GLASSES — OPTIONAL, NOT REQUIRED</p>
+        <h2>Premium immersion without expensive personal hardware.</h2>
         <p class="section-lead">
-          Fitness clubs can own a shared pool of devices and provide them during workouts,
-          creating a scalable digital coaching service for members.
+          Gyms and sports centers can own a shared set of AR glasses and provide them only for the duration
+          of a workout. The user keeps a personal profile while the hardware stays with the facility.
         </p>
       </div>
+
+      <div class="user-flow glass-card">
+        <div><span>01</span><strong>Enter the gym</strong></div>
+        <b>→</b>
+        <div><span>02</span><strong>Receive glasses</strong></div>
+        <b>→</b>
+        <div><span>03</span><strong>Log in</strong></div>
+        <b>→</b>
+        <div><span>04</span><strong>Train with AI</strong></div>
+        <b>→</b>
+        <div><span>05</span><strong>Return glasses</strong></div>
+      </div>
+
       <div class="business-grid">
-        <article class="business-card glass-card"><strong>01</strong><h3>Club-owned devices</h3><p>Smart glasses stay in the gym and are issued to members for a session.</p></article>
-        <article class="business-card glass-card"><strong>02</strong><h3>Coach as a service</h3><p>Users receive step-by-step guidance even when a human trainer is unavailable.</p></article>
-        <article class="business-card glass-card"><strong>03</strong><h3>Multiple sports</h3><p>The same platform can extend to fitness, yoga, Pilates and sports training.</p></article>
+        <article class="business-card glass-card"><strong>Shared hardware</strong><p>A single device pool can serve many customers throughout the day.</p></article>
+        <article class="business-card glass-card"><strong>Digital coaching service</strong><p>Members receive AI guidance even when a personal trainer is unavailable.</p></article>
+        <article class="business-card glass-card"><strong>Premium revenue layer</strong><p>AR coaching can become an additional paid service for the facility.</p></article>
+      </div>
+    </section>
+
+    <section class="section sports-section">
+      <div class="section-heading">
+        <p class="eyebrow">MULTIPLE SPORTS</p>
+        <h2>One technology — many use cases.</h2>
+      </div>
+      <div class="sports-grid">
+        <article><span>🏋</span><strong>Fitness</strong><small>Strength and functional training</small></article>
+        <article><span>🏃</span><strong>Running</strong><small>Sessions and load management</small></article>
+        <article><span>◌</span><strong>Yoga</strong><small>Body position and exercise sequences</small></article>
+        <article><span>◎</span><strong>Pilates</strong><small>Movement technique and control</small></article>
+        <article><span>⌂</span><strong>Home Training</strong><small>Workouts with a regular camera</small></article>
+      </div>
+    </section>
+
+    <section class="section business-model-section">
+      <div class="section-heading">
+        <p class="eyebrow">BUSINESS MODEL</p>
+        <h2>B2C + B2B with a path to premium AI coaching.</h2>
+      </div>
+
+      <div class="model-grid">
+        <article class="model-card glass-card"><span>01</span><h3>User Subscription</h3><p>Access to the personal AI Sports Assistant through a smartphone or computer.</p></article>
+        <article class="model-card glass-card"><span>02</span><h3>Gym Subscription</h3><p>One facility can provide the platform to multiple customers.</p></article>
+        <article class="model-card glass-card"><span>03</span><h3>AR Glasses Rental</h3><p>The device is provided only for the duration of the workout.</p></article>
+        <article class="model-card glass-card"><span>04</span><h3>Premium AI Coach</h3><p>Deeper personalization, analytics and individual training programs.</p></article>
+      </div>
+    </section>
+
+    <section id="roadmap" class="section roadmap-section">
+      <div class="section-heading">
+        <p class="eyebrow">MVP & ROADMAP</p>
+        <h2>Start with accessible technology. Validate step by step.</h2>
+      </div>
+
+      <div class="roadmap-grid">
+        <article class="glass-card">
+          <span class="roadmap-stage">FIRST STAGE</span>
+          <h3>Accessible MVP</h3>
+          <ul>
+            <li>AI Sports Assistant</li>
+            <li>Smartphone camera & webcam</li>
+            <li>Workout program</li>
+            <li>Repetition counter</li>
+            <li>Rest timer</li>
+            <li>Basic movement analysis</li>
+          </ul>
+        </article>
+
+        <article class="glass-card">
+          <span class="roadmap-stage">NEXT STAGE</span>
+          <h3>Computer vision layer</h3>
+          <ul>
+            <li>Full pose tracking</li>
+            <li>Exercise recognition</li>
+            <li>Equipment recognition</li>
+            <li>Technique-error analysis</li>
+            <li>Wearable-device integration</li>
+          </ul>
+        </article>
+
+        <article class="glass-card">
+          <span class="roadmap-stage">FUTURE</span>
+          <h3>Immersive ecosystem</h3>
+          <ul>
+            <li>AR / VR glasses</li>
+            <li>Virtual trainer in the real environment</li>
+            <li>Deeper personalization</li>
+            <li>Gym and sports-center pilots</li>
+            <li>Multiple sports disciplines</li>
+          </ul>
+        </article>
+      </div>
+
+      <div class="validation-kit glass-card">
+        <div>
+          <p class="eyebrow">WHAT WE NEED FOR FULL VALIDATION</p>
+          <h2>Real hardware + real training conditions.</h2>
+        </div>
+        <div class="validation-items">
+          <span><b>AR / VR glasses</b> for immersive interface testing</span>
+          <span><b>Sports smartwatch / wearables</b> for heart-rate and activity data</span>
+          <span><b>Camera testing</b> with smartphones and webcams for movement analysis</span>
+        </div>
       </div>
     </section>
 
     <section class="final-cta glass-card">
       <div>
-        <p class="eyebrow">AI TEAM MATE VISION</p>
-        <h2>The next interface for personal sports training.</h2>
+        <p class="eyebrow">ALTIMA ML VISION</p>
+        <h2>Your Personal AI Sports Assistant.</h2>
+        <p>Smart analytics. Personal AI coaching. Healthier living. Better training decisions.</p>
       </div>
       <button id="finalDemoBtn" class="primary">Try the MVP</button>
     </section>
   </main>
 
   <footer>
-    AI Team Mate Vision • Interactive MVP
+    <strong>ALTIMA ML VISION</strong>
+    <span>Personal AI Sports Assistant • Xttopbio</span>
   </footer>
 
   <script src="app.js"></script>
