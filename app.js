@@ -222,3 +222,110 @@ if ('serviceWorker' in navigator) {
     navigator.serviceWorker.register('./service-worker.js').catch(() => {});
   });
 }
+
+
+/* Interactive 360-style Altima avatar */
+(() => {
+  const viewer = document.getElementById('avatarViewer');
+  const layerA = document.getElementById('avatarLayerA');
+  const layerB = document.getElementById('avatarLayerB');
+  const angleLabel = document.getElementById('avatarAngle');
+  if (!viewer || !layerA || !layerB) return;
+
+  const frames = [
+    { angle: 0, src: 'avatar/front.webp', flip: false },
+    { angle: 45, src: 'avatar/quarter.webp', flip: false },
+    { angle: 90, src: 'avatar/side.webp', flip: false },
+    { angle: 180, src: 'avatar/back.webp', flip: false },
+    { angle: 270, src: 'avatar/side.webp', flip: true },
+    { angle: 315, src: 'avatar/quarter.webp', flip: true },
+    { angle: 360, src: 'avatar/front.webp', flip: false }
+  ];
+
+  frames.forEach((frame) => {
+    const img = new Image();
+    img.src = frame.src;
+  });
+
+  let targetAngle = 0;
+  let displayAngle = 0;
+  let dragging = false;
+  let lastX = 0;
+
+  function normalize(value) {
+    return ((value % 360) + 360) % 360;
+  }
+
+  function setLayer(layer, frame, opacity) {
+    if (layer.dataset.src !== frame.src) {
+      layer.src = frame.src;
+      layer.dataset.src = frame.src;
+    }
+    layer.style.opacity = opacity;
+    layer.style.transform = frame.flip ? 'scaleX(-1)' : 'scaleX(1)';
+  }
+
+  function render(angle) {
+    const a = normalize(angle);
+    let left = frames[0];
+    let right = frames[1];
+
+    for (let n = 0; n < frames.length - 1; n += 1) {
+      if (a >= frames[n].angle && a <= frames[n + 1].angle) {
+        left = frames[n];
+        right = frames[n + 1];
+        break;
+      }
+    }
+
+    const range = Math.max(1, right.angle - left.angle);
+    const mix = Math.min(1, Math.max(0, (a - left.angle) / range));
+
+    setLayer(layerA, left, 1 - mix);
+    setLayer(layerB, right, mix);
+
+    if (angleLabel) angleLabel.textContent = Math.round(a) + '°';
+  }
+
+  function animate() {
+    const delta = targetAngle - displayAngle;
+    displayAngle += delta * 0.14;
+    if (Math.abs(delta) < 0.02) displayAngle = targetAngle;
+    render(displayAngle);
+    requestAnimationFrame(animate);
+  }
+
+  viewer.addEventListener('wheel', (event) => {
+    event.preventDefault();
+    targetAngle += event.deltaY * 0.11;
+  }, { passive: false });
+
+  viewer.addEventListener('pointerdown', (event) => {
+    dragging = true;
+    lastX = event.clientX;
+    viewer.classList.add('is-dragging');
+    viewer.setPointerCapture?.(event.pointerId);
+  });
+
+  viewer.addEventListener('pointermove', (event) => {
+    if (!dragging) return;
+    const dx = event.clientX - lastX;
+    lastX = event.clientX;
+    targetAngle += dx * 0.55;
+  });
+
+  function stopDrag(event) {
+    dragging = false;
+    viewer.classList.remove('is-dragging');
+    if (event?.pointerId != null) viewer.releasePointerCapture?.(event.pointerId);
+  }
+
+  viewer.addEventListener('pointerup', stopDrag);
+  viewer.addEventListener('pointercancel', stopDrag);
+  viewer.addEventListener('pointerleave', (event) => {
+    if (dragging && event.buttons === 0) stopDrag(event);
+  });
+
+  render(0);
+  animate();
+})();
