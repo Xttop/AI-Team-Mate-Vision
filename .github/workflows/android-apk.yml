@@ -1,0 +1,70 @@
+name: Build Android APK
+
+on:
+  push:
+    branches: [ main ]
+    paths:
+      - "android-app/**"
+      - ".github/workflows/android-apk.yml"
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    timeout-minutes: 45
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: "22.13.1"
+          cache: npm
+          cache-dependency-path: android-app/package.json
+
+      - name: Setup Java
+        uses: actions/setup-java@v4
+        with:
+          distribution: temurin
+          java-version: "17"
+
+      - name: Setup Android SDK
+        uses: android-actions/setup-android@v3
+
+      - name: Install dependencies
+        working-directory: android-app
+        run: npm install --no-audit --no-fund
+
+      - name: Generate Android project
+        working-directory: android-app
+        env:
+          CI: "1"
+        run: npx expo prebuild --platform android --clean
+
+      - name: Build debug APK
+        working-directory: android-app/android
+        run: |
+          chmod +x gradlew
+          ./gradlew assembleDebug --no-daemon
+
+      - name: Prepare APK
+        run: cp android-app/android/app/build/outputs/apk/debug/app-debug.apk Altima-ML-Vision-debug.apk
+
+      - name: Upload APK artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: Altima-ML-Vision-Android
+          path: Altima-ML-Vision-debug.apk
+          retention-days: 30
+
+      - name: Publish latest test APK
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          TAG="android-build-${GITHUB_RUN_NUMBER}"
+          gh release create "$TAG" Altima-ML-Vision-debug.apk             --repo "${GITHUB_REPOSITORY}"             --title "Altima ML Vision Android build ${GITHUB_RUN_NUMBER}"             --notes "Automatic Android test build of Altima ML Vision. This is a debug APK for device testing."             --latest
