@@ -1,0 +1,9 @@
+node_modules/
+.expo/
+android/
+dist/
+*.jks
+*.keystore
+*.apk
+*.aab
+npm-debug.log*
