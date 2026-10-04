@@ -1,0 +1,96 @@
+name: Build avatar demo video
+
+on:
+  push:
+    branches: [ main ]
+    paths:
+      - "avatar/front.webp"
+      - "avatar/quarter.webp"
+      - "avatar/side.webp"
+      - "avatar/back.webp"
+      - ".github/workflows/build-avatar-video.yml"
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  build-video:
+    if: github.actor != 'github-actions[bot]'
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Install Pillow
+        run: pip install pillow
+
+      - name: Install ffmpeg
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y ffmpeg
+
+      - name: Build smooth 360 avatar video
+        run: |
+          mkdir -p /tmp/avatar_frames
+          python - <<'PY'
+          from PIL import Image
+          import os, math
+
+          base = "avatar"
+          src = [
+              os.path.join(base, "front.webp"),
+              os.path.join(base, "quarter.webp"),
+              os.path.join(base, "side.webp"),
+              os.path.join(base, "back.webp"),
+          ]
+
+          size = 720
+          keys = [Image.open(p).convert("RGB").resize((size,size), Image.Resampling.LANCZOS) for p in src]
+          seq = [
+              keys[0],
+              keys[1],
+              keys[2],
+              keys[3],
+              keys[2].transpose(Image.Transpose.FLIP_LEFT_RIGHT),
+              keys[1].transpose(Image.Transpose.FLIP_LEFT_RIGHT),
+              keys[0],
+          ]
+
+          def ease(t):
+              return 0.5 - 0.5 * math.cos(math.pi * t)
+
+          frame = 0
+          frames_per_segment = 22
+          for s in range(len(seq)-1):
+              a, b = seq[s], seq[s+1]
+              for j in range(frames_per_segment):
+                  t = ease(j / frames_per_segment)
+                  Image.blend(a, b, t).save(f"/tmp/avatar_frames/frame_{frame:04d}.jpg", quality=94)
+                  frame += 1
+
+          for _ in range(8):
+              seq[-1].save(f"/tmp/avatar_frames/frame_{frame:04d}.jpg", quality=94)
+              frame += 1
+          PY
+
+          ffmpeg -y -framerate 24 -i /tmp/avatar_frames/frame_%04d.jpg             -vf "minterpolate=fps=60:mi_mode=mci:mc_mode=aobmc:me_mode=bidir:vsbmc=1,setpts=1.30*PTS"             -an -c:v libx264 -preset medium -crf 20 -pix_fmt yuv420p -movflags +faststart             avatar/Altima_avatar_360_smooth_60fps.mp4
+
+      - name: Commit video
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add avatar/Altima_avatar_360_smooth_60fps.mp4
+          if git diff --cached --quiet; then
+            echo "No video changes."
+          else
+            git commit -m "Add smooth Altima avatar demo video"
+            git push
+          fi
