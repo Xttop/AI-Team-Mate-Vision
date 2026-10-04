@@ -1,0 +1,26 @@
+{
+  "expo": {
+    "name": "Altima ML Vision",
+    "slug": "altima-ml-vision",
+    "version": "0.1.0",
+    "orientation": "portrait",
+    "userInterfaceStyle": "dark",
+    "newArchEnabled": true,
+    "android": {
+      "package": "com.xttopbio.altimamlvision",
+      "versionCode": 1,
+      "permissions": [
+        "CAMERA"
+      ],
+      "edgeToEdgeEnabled": true
+    },
+    "plugins": [
+      [
+        "expo-camera",
+        {
+          "cameraPermission": "Altima ML Vision needs camera access to analyze exercise technique."
+        }
+      ]
+    ]
+  }
+}
