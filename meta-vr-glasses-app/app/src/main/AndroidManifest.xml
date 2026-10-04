@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest
+  xmlns:android="http://schemas.android.com/apk/res/android"
+  xmlns:horizonos="http://schemas.horizonos/sdk"
+  android:installLocation="auto">
+
+  <horizonos:uses-horizonos-sdk
+    horizonos:minSdkVersion="69"
+    horizonos:targetSdkVersion="207" />
+
+  <uses-feature
+    android:name="android.hardware.vr.headtracking"
+    android:required="true" />
+
+  <!-- Meta VR Glasses use eye gaze for targeting and hand pinch for selection. -->
+  <uses-feature
+    android:name="oculus.software.eye_tracking"
+    android:required="false" />
+  <uses-permission android:name="horizonos.permission.EYE_TRACKING" />
+
+  <uses-feature
+    android:name="oculus.software.handtracking"
+    android:required="false" />
+  <uses-permission android:name="horizonos.permission.HAND_TRACKING" />
+  <uses-permission android:name="com.oculus.permission.HAND_TRACKING" />
+
+  <uses-feature
+    android:name="com.oculus.feature.PASSTHROUGH"
+    android:required="true" />
+
+  <uses-permission android:name="android.permission.INTERNET" />
+  <uses-permission android:name="android.permission.MODIFY_AUDIO_SETTINGS" />
+
+  <application
+    android:allowBackup="false"
+    android:label="Altima ML Vision">
+
+    <!-- quest3+ includes the Quest 3 family, Meta VR Glasses and future devices. -->
+    <meta-data
+      android:name="com.meta.store.defaultDeviceTargets"
+      android:value="quest3+" />
+
+    <meta-data
+      android:name="com.oculus.handtracking.version"
+      android:value="V2.0" />
+    <meta-data
+      android:name="com.oculus.vr.focusaware"
+      android:value="true" />
+
+    <uses-native-library
+      android:name="libossdk.oculus.so"
+      android:required="true" />
+
+    <activity
+      android:name=".AltimaVrGlassesActivity"
+      android:launchMode="singleTask"
+      android:excludeFromRecents="false"
+      android:configChanges="screenSize|screenLayout|orientation|keyboardHidden|keyboard|navigation|uiMode"
+      android:exported="true">
+
+      <intent-filter>
+        <action android:name="android.intent.action.MAIN" />
+        <category android:name="com.oculus.intent.category.VR" />
+        <category android:name="android.intent.category.LAUNCHER" />
+      </intent-filter>
+    </activity>
+  </application>
+</manifest>
