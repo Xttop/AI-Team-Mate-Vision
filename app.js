@@ -8,6 +8,7 @@ const cameraExercise = document.getElementById('cameraExercise');
 const cameraTip = document.getElementById('cameraTip');
 const cameraHeartRate = document.getElementById('cameraHeartRate');
 
+const demoSection = document.getElementById('demo');
 const cameraSection = document.getElementById('arCameraSection');
 const cameraVideo = document.getElementById('cameraVideo');
 const cameraPlaceholder = document.getElementById('cameraPlaceholder');
@@ -35,8 +36,16 @@ function startDemo() {
       cameraHeartRate.textContent = value;
     }, 1200);
   }
+
   formStatus.textContent = 'Tracking live';
   formStatus.classList.add('good');
+}
+
+function openDemo() {
+  if (demoSection) {
+    demoSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
+  }
+  startDemo();
 }
 
 function resetDemo() {
@@ -50,9 +59,12 @@ function resetDemo() {
 
   if (restHandle) clearInterval(restHandle);
   if (hrHandle) clearInterval(hrHandle);
+
   restHandle = null;
   hrHandle = null;
-  document.getElementById('timerBtn').textContent = 'Start rest';
+
+  const timerBtn = document.getElementById('timerBtn');
+  if (timerBtn) timerBtn.textContent = 'Start rest';
 }
 
 async function startCamera() {
@@ -63,6 +75,7 @@ async function startCamera() {
 
   try {
     cameraStatus.textContent = 'Requesting camera permission…';
+
     cameraStream = await navigator.mediaDevices.getUserMedia({
       video: { facingMode: { ideal: 'environment' } },
       audio: false
@@ -72,7 +85,7 @@ async function startCamera() {
     cameraPlaceholder.style.display = 'none';
     cameraBtn.disabled = true;
     stopCameraBtn.disabled = false;
-    cameraStatus.textContent = 'Camera active. AR guidance overlay is running.';
+    cameraStatus.textContent = 'Camera active. AI guidance overlay is running.';
     startDemo();
   } catch (error) {
     cameraStatus.textContent = 'Camera permission was not granted. You can enable it in browser site settings.';
@@ -92,41 +105,62 @@ function stopCamera() {
   cameraStatus.textContent = 'Camera is off.';
 }
 
-document.getElementById('startBtn').addEventListener('click', startDemo);
-document.getElementById('demoBtn').addEventListener('click', startDemo);
-document.getElementById('resetBtn').addEventListener('click', resetDemo);
+const startBtn = document.getElementById('startBtn');
+const demoBtn = document.getElementById('demoBtn');
+const resetBtn = document.getElementById('resetBtn');
+const cameraJumpBtn = document.getElementById('cameraJumpBtn');
+const repBtn = document.getElementById('repBtn');
+const timerBtn = document.getElementById('timerBtn');
+const finalDemoBtn = document.getElementById('finalDemoBtn');
 
-document.getElementById('cameraJumpBtn').addEventListener('click', () => {
-  cameraSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
-});
+if (startBtn) startBtn.addEventListener('click', openDemo);
+if (demoBtn) demoBtn.addEventListener('click', openDemo);
+if (resetBtn) resetBtn.addEventListener('click', resetDemo);
+if (finalDemoBtn) finalDemoBtn.addEventListener('click', openDemo);
 
-cameraBtn.addEventListener('click', startCamera);
-stopCameraBtn.addEventListener('click', stopCamera);
+if (cameraJumpBtn) {
+  cameraJumpBtn.addEventListener('click', () => {
+    cameraSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
+  });
+}
 
-document.getElementById('repBtn').addEventListener('click', () => {
-  repCount = Math.min(12, repCount + 1);
-  reps.textContent = repCount;
-  if (repCount === 12) formStatus.textContent = 'Set complete';
-});
+if (cameraBtn) cameraBtn.addEventListener('click', startCamera);
+if (stopCameraBtn) stopCameraBtn.addEventListener('click', stopCamera);
 
-document.getElementById('timerBtn').addEventListener('click', (event) => {
-  if (restHandle) return;
+if (repBtn) {
+  repBtn.addEventListener('click', () => {
+    repCount = Math.min(12, repCount + 1);
+    reps.textContent = repCount;
 
-  event.currentTarget.textContent = 'Resting…';
-  restHandle = setInterval(() => {
-    restSeconds -= 1;
-    renderTimer();
-
-    if (restSeconds <= 0) {
-      clearInterval(restHandle);
-      restHandle = null;
-      event.currentTarget.textContent = 'Start rest';
-      restSeconds = 30;
-      formStatus.textContent = 'Ready for next set';
-      setTimeout(renderTimer, 900);
+    if (repCount === 12) {
+      formStatus.textContent = 'Set complete';
+    } else if (repCount > 0) {
+      formStatus.textContent = 'Tracking live';
     }
-  }, 1000);
-});
+  });
+}
+
+if (timerBtn) {
+  timerBtn.addEventListener('click', (event) => {
+    if (restHandle) return;
+
+    event.currentTarget.textContent = 'Resting…';
+
+    restHandle = setInterval(() => {
+      restSeconds -= 1;
+      renderTimer();
+
+      if (restSeconds <= 0) {
+        clearInterval(restHandle);
+        restHandle = null;
+        event.currentTarget.textContent = 'Start rest';
+        restSeconds = 30;
+        formStatus.textContent = 'Ready for next set';
+        setTimeout(renderTimer, 900);
+      }
+    }, 1000);
+  });
+}
 
 document.querySelectorAll('.exercise').forEach((button) => {
   button.addEventListener('click', () => {
@@ -147,13 +181,12 @@ document.querySelectorAll('.exercise').forEach((button) => {
   });
 });
 
+document.querySelectorAll('.sport-chip').forEach((button) => {
+  button.addEventListener('click', () => {
+    document.querySelectorAll('.sport-chip').forEach((item) => item.classList.remove('active'));
+    button.classList.add('active');
+  });
+});
+
 window.addEventListener('beforeunload', stopCamera);
 renderTimer();
-
-const finalDemoBtn = document.getElementById('finalDemoBtn');
-if (finalDemoBtn) {
-  finalDemoBtn.addEventListener('click', () => {
-    document.getElementById('demo').scrollIntoView({ behavior: 'smooth', block: 'start' });
-    startDemo();
-  });
-}
